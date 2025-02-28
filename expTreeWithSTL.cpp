@@ -1,5 +1,6 @@
 /*Construct an expressiontree from the given prefix expression 
 for example +--a*bc/def and traverse it using postorder traversal non recursive and then delete the entire tree*/
+
 #include<iostream>
 #include<stack>
 using namespace std;
@@ -90,4 +91,5 @@ int main(){
 
     deleteTree(root);
     cout<<"\nTree is deleted successfully\n";
+    cout<<endl;
 }
