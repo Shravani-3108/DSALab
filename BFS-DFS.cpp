@@ -7,12 +7,24 @@
 
 using namespace std;
 
+void dfs(int node,vector<vector<int>>&myGraph,vector<bool>&vis){
+    
+    vis[node]=true;
+    cout<<node<<" ";
+    
+    for(int i : myGraph[node]){
+        if(!vis[i]){
+            dfs(i,myGraph,vis);
+        }
+    }
 
-void bfs(int start,vector<vector<int>> myGraph,int v){
+}
+
+void bfs(int start,vector<vector<int>> &myGraph,int v){
     vector<bool>vis(v,false);
     queue<int>q;
-    q.push(0);
-    vis[0]=true;
+    q.push(start);
+    vis[start]=true;
     while(!q.empty()){
         int node=q.front();
         q.pop();
@@ -29,6 +41,8 @@ void bfs(int start,vector<vector<int>> myGraph,int v){
 
 
 int main(){
+    cout<<"Landmarks:\n0 -> Main Gate\n1 -> Library\n2 -> Canteen\n3 -> Hostel\n4 -> Auditorium\n5 -> Admin Block\n";
+                        
     int v,e;
     cout<<"Enter No of vertices and edges\n";
     cin>>v>>e;
@@ -40,8 +54,9 @@ int main(){
         myGraph[u].push_back(v);
         myGraph[v].push_back(u);
     }
+    vector<bool>vis(v,false);
 
-    bfs(0,myGraph,v);
+    dfs(0,myGraph,vis);
 
 }
 
